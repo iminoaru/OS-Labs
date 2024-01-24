@@ -1,0 +1,29 @@
+fork() basics
+
+Negative Value: The creation of a child process was unsuccessful.
+Zero: Returned to the newly created child process.
+Positive value: Returned to parent or caller. The value contains the
+process ID of the newly created child process.
+
+In the original process, you get the PID of the child process. 
+In the child process, you get 0.
+
+total processes = 2^no. of forks
+
+
+
+wait() basics
+
+If any process has more than one child processes, then after calling
+wait(), parent process has to be in wait state if no child terminates. 
+If only one child process is terminated, then return a wait() returns process ID of the terminated child process. 
+
+
+
+strdup() basics
+
+char *strdup(const char *s); 
+This function returns a pointer to a null-terminated byte string, 
+which is a duplicate of the string pointed to by s. The memory obtained
+is done dynamically using malloc and hence it can be freed using free(). 
+It returns a pointer to the duplicated string s.
