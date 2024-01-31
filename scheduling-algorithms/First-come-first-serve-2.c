@@ -55,7 +55,7 @@ int main(){
         int waiting = turnAround - burst[i];
         printf("waiting time for p%d: %d\n",pos[i], waiting);
 
-        int response = completion[i] - burst[i] - arrival[i];
+        int response = completion[i] - arrival[i] - burst[i];
         printf("response time for p%d: %d\n\n",pos[i], response);
     }
 

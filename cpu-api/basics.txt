@@ -16,7 +16,8 @@ wait() basics
 
 If any process has more than one child processes, then after calling
 wait(), parent process has to be in wait state if no child terminates. 
-If only one child process is terminated, then return a wait() returns process ID of the terminated child process. 
+If only one child process is terminated, then return.
+a wait() returns process ID of the terminated child process. 
 
 
 
