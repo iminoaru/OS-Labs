@@ -3,12 +3,12 @@ for the following set of process to compute
 (iv) Average Turn Around Time
 (v) Average Waiting Time
 (vi) Average Response Time
-Process		Burst time	arrival time
-P1		    6		    2
-P2		    2		    5
-P3		    8		    1
-P4		    3		    0
-P5		    4		    4
+Process         Burst time      arrival time
+P1                  6               2
+P2                  2               5
+P3                  8               1
+P4                  3               0
+P5                  4               4
 */
 
 //p4 p3 p1 p5 p2
@@ -17,15 +17,31 @@ P5		    4		    4
 
 int main(){
 
-    int burst[5] = {6 , 2 , 8 , 3 , 4};
-    int arrival[5] = {2 , 5 , 1 , 0 , 4};
-    int pos[5] = {1 , 2 , 3 , 4 , 5};
+    int n;
+    
+    printf("Enter number of processes :");
+    scanf("%d" , &n);
+    
+    int burst[n];
+    int arrival[n];
+    int pos[n];
 
-    int completion[5];
+    int completion[n];
+    
+    for(int i = 0 ; i < n ; i++){
+            printf("Enter arrival Time of process p%d: ", i+1);
+            scanf("%d" , &arrival[i]);
+            
+            printf("Enter burst Time of process p%d: ", i+1);
+            scanf("%d" , &burst[i]);
+            
+            pos[i] = i+1;
+    }
+
 
     // sorting all the arrays according to arrival time
-    for(int i = 0 ; i < 4 ; i++){
-        for(int j = 0 ; j < 4 - i ; j++){
+    for(int i = 0 ; i < n - 1 ; i++){
+        for(int j = 0 ; j < n - 1 - i ; j++){
 
             if (arrival[j] > arrival[j + 1]){
                 arrival[j] = arrival[j] + arrival[j + 1];
@@ -44,21 +60,30 @@ int main(){
     }
 
     completion[0] = burst[0];
-    for(int i = 1 ; i < 5 ; i++){
+    for(int i = 1 ; i < n ; i++){
         completion[i] = burst[i] + completion[i-1];
     }
+    
+    int tA , wA , rA;
 
-    for(int i = 0 ; i < 5 ; i++){
+    for(int i = 0 ; i < n ; i++){
         int turnAround = completion[i] - arrival[i];
-        printf("turn around for p%d: %d\n",pos[i], turnAround);
+       	tA += turnAround;
+       	printf("turn around for p%d: %d\n",pos[i], turnAround);
 
         int waiting = turnAround - burst[i];
-        printf("waiting time for p%d: %d\n",pos[i], waiting);
+        wA += waiting;
+	    printf("waiting time for p%d: %d\n",pos[i], waiting);
 
         int response = i ?  completion[i-1] - arrival[i] : 0 ;
-        printf("response time for p%d: %d\n\n",pos[i], response);
+        rA += response;
+       	printf("response time for p%d: %d\n\n",pos[i], response);
     }
+    
+    
+    printf("Average TurnAround Time: %d\n" , tA/n);
+    printf("Average Waiting Time: %d\n" , wA/n);
+    printf("Average Response Time: %d\n" , rA/n);
 
     return 0;
 }
-
