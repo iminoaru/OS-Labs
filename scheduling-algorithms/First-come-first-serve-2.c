@@ -64,7 +64,7 @@ int main(){
         completion[i] = burst[i] + completion[i-1];
     }
     
-    int tA , wA , rA;
+    int tA = 0 , wA = 0 , rA =0;
 
     for(int i = 0 ; i < n ; i++){
         int turnAround = completion[i] - arrival[i];
