@@ -52,13 +52,9 @@ int main(){
 		if(item > 0){
 			q[tail+1] = item;
 			tail++;
-
-		
-		gsum -= q[head] - q[tail+1];		
+			gsum -= q[head] - q[tail+1];		
 		}
 		 head++;
-		
-		
 		
 	}
 
@@ -67,8 +63,6 @@ int main(){
                 printf("%d  " , q[i]);
 
         }
-
-	
 
 	return 0;
 }
