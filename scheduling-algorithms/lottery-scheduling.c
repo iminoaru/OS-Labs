@@ -26,7 +26,7 @@ int main(){
 			if(rc > pr[i] && rc < pr[i+1]) tr = i+1; 
 		}
 		if(burst[tr] != 0) {
-			burst[tr] -= 5;
+			burst[tr] -= 5; // taken 5 as the time slot
 			 printf("P%d  " , p[tr]);
 		}
 	}
